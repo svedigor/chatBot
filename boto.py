@@ -4,6 +4,7 @@ This is the template server side for ChatBot
 from bottle import route, run, template, static_file, request
 import json
 
+from main import main_chat
 
 @route('/', method='GET')
 def index():
@@ -13,13 +14,13 @@ def index():
 @route("/chat", method='POST')
 def chat():
     user_message = request.POST.get('msg')
-    return json.dumps({"animation": "inlove", "msg": user_message})
+    return json.dumps({"animation": "inlove", "msg": main_chat(user_message)})
 
 
 @route("/test", method='POST')
 def chat():
     user_message = request.POST.get('msg')
-    return json.dumps({"animation": "inlove", "msg": user_message})
+    return json.dumps({"animation":"..images.boto.afraid.gif", "msg": user_message})
 
 
 @route('/js/<filename:re:.*\.js>', method='GET')
